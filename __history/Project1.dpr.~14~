@@ -1,0 +1,93 @@
+library Project1;
+
+
+
+uses
+  System.SysUtils,
+  System.Classes,
+  VCL.Forms,
+  VCL.Dialogs,
+  System.StrUtils,
+  Windows,
+  Messages,
+  WinProcs,
+  MMSystem;
+
+{$R *.res}
+
+var
+  Form1:TForm;
+  hW: hWnd;     // для поиска хендла окна
+  PID: cardinal; // для поиска  ID процесса
+  hProc: THandle;
+  rw: size_T;
+  charX: single;
+  charZ: single;
+  charBase: dword;
+                                 //поиск окна по заголовку
+//procedure connect; stdcall; export;
+//
+//begin
+//     hW:=FindWindow(nil, 'RF Online');
+//
+//     if hW<>0 then
+//     begin
+//           GetWindowThreadProcessId(hW, @PID); //получаем PID найденного окна
+//            hProc:= OpenProcess(Process_All_Access, False, PID); // получаем handle процесса
+//            SetWindowText(hw, 'RF Online: ' +inttostr(PID));
+//            PlaySound('C:\RFO\Snd\Interface\MAKE_SUCCESS_00.wav', 0, SND_ASYNC);
+//     end
+//
+//
+// end;
+
+
+function connect(hw:hwnd; PID:integer): integer; stdcall; export;
+
+begin
+     hW:=FindWindow(nil, 'RF Online');
+
+     if hW<>0 then
+     begin
+           GetWindowThreadProcessId(hW, @PID); //получаем PID найденного окна
+            hProc:= OpenProcess(Process_All_Access, False, PID); // получаем handle процесса
+            SetWindowText(hw, 'RF Online: ' +inttostr(PID));
+            PlaySound('C:\RFO\Snd\Interface\MAKE_SUCCESS_00.wav', 0, SND_ASYNC);
+     end
+
+
+ end;
+
+                           //лутаем
+ procedure loot; stdcall; export;
+  var i:integer;
+
+     begin
+
+        for I := 0 to 1 do
+     begin
+          postmessage(hw, WM_ACTIVATE, 1, 0);
+          postmessage(hw, WM_KEYDOWN, $58, 0);
+     end;
+     i:=i+0;
+      end;
+
+
+//procedure charCoord(charX, charZ: single); stdcall; export;
+//begin
+//  charBase:= $0238CFBC;
+//  ReadProcessmemory(hw, pointer(charBase), @charbase, sizeof(charBase), rw);
+//  ReadProcessmemory(hw, pointer(charBase+80), @charX, sizeof(charX), rw);
+//  ReadProcessmemory(hw, pointer(charBase+88), @charZ, sizeof(charX), rw);
+//end;
+
+
+
+
+                               //экспортируем процедуры и функции
+ Exports connect, loot;// charCoord;
+
+     begin
+
+     end.
+

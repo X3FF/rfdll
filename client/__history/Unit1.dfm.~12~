@@ -1,0 +1,44 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Form1'
+  ClientHeight = 42
+  ClientWidth = 473
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SpeedButton1: TSpeedButton
+    Left = 2
+    Top = -1
+    Width = 74
+    Height = 35
+    Cursor = crHandPoint
+    Caption = 'Connect'
+    OnClick = SpeedButton1Click
+  end
+  object SpeedButton2: TSpeedButton
+    Left = 82
+    Top = 4
+    Width = 70
+    Height = 35
+    Caption = 'Buff [F1]'
+    OnClick = SpeedButton2Click
+  end
+  object Shape1: TShape
+    Left = 68
+    Top = 10
+    Width = 4
+    Height = 25
+    Brush.Color = clWindowFrame
+    Enabled = False
+    Pen.Style = psClear
+  end
+end

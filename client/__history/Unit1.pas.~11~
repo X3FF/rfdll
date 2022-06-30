@@ -1,0 +1,60 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    Shape1: TShape;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  hW: hWnd;
+  PID: cardinal; // для поиска  ID процесса
+  hProc: THandle;
+  rw: SIZE_T;
+
+implementation
+
+{$R *.dfm}
+                                       //экспорты из dll
+procedure connect; stdcall; external 'C:\RFO\Project1.dll';
+procedure loot; stdcall; external 'C:\RFO\Project1.dll';
+
+
+
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+     connect;
+      if hw<>0 then
+      begin
+        Shape1.Brush.Color:=clLime;
+        Speedbutton1.Caption:=inttostr(PID);
+        Speedbutton1.Enabled:= false;
+      end
+      else
+          Shape1.Brush.Color:=clRed;
+
+end;
+
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+       loot;
+end;
+
+
+end.

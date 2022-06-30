@@ -1,0 +1,60 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Form1'
+  ClientHeight = 47
+  ClientWidth = 473
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SpeedButton1: TSpeedButton
+    Left = 2
+    Top = 3
+    Width = 74
+    Height = 35
+    Cursor = crHandPoint
+    Caption = 'Connect'
+    OnClick = SpeedButton1Click
+  end
+  object SpeedButton2: TSpeedButton
+    Left = 82
+    Top = 4
+    Width = 70
+    Height = 35
+    Caption = 'Buff [F1]'
+    OnClick = SpeedButton2Click
+  end
+  object Shape1: TShape
+    Left = 68
+    Top = 10
+    Width = 4
+    Height = 25
+    Brush.Color = clWindowFrame
+    Enabled = False
+    Pen.Style = psClear
+  end
+  object lootswitch: TToggleSwitch
+    Left = 159
+    Top = 13
+    Width = 50
+    Height = 20
+    ShowStateCaption = False
+    TabOrder = 0
+    OnClick = lootswitchClick
+  end
+  object loottimer: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = loottimerTimer
+    Left = 218
+    Top = 8
+  end
+end
